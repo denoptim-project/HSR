@@ -12,7 +12,7 @@ from .pre_processing import *
 from .pca_transform import *
 from .utils import *
 
-def generate_reference_points(dimensionality):
+def generate_reference_points(dimensionality, scaling=None):
     """
     Generate reference points in the n-dimensional space.
     
@@ -20,6 +20,8 @@ def generate_reference_points(dimensionality):
     ----------
     dimensionality : int
         The number of dimensions.
+    scaling : float, np.ndarray
+        The scaling applied to the reference points.
 
     Returns
     -------
@@ -29,6 +31,15 @@ def generate_reference_points(dimensionality):
     centroid = np.zeros(dimensionality)
     axis_points = np.eye(dimensionality)
     reference_points = np.vstack((centroid, axis_points))
+    
+    if scaling is not None:
+        if isinstance(scaling, (float, int)):
+            reference_points *= scaling
+        elif isinstance(scaling, np.ndarray):
+            reference_points = np.dot(reference_points, scaling)
+        else:
+            raise TypeError("Scaling must be either a number (factor) or a numpy array (matrix).")
+    
     return reference_points
 
 def compute_distances(molecule_data: np.ndarray, scaling=None):
@@ -50,15 +61,7 @@ def compute_distances(molecule_data: np.ndarray, scaling=None):
     np.ndarray
         A matrix of distances, where each element [i, j] is the distance between the i-th molecule data point and the j-th reference point.
     """
-    reference_points = generate_reference_points(molecule_data.shape[1])
-    
-    if scaling is not None:
-        if isinstance(scaling, (float, int)):
-            reference_points *= scaling
-        elif isinstance(scaling, np.ndarray):
-            reference_points = np.dot(reference_points, scaling)
-        else:
-            raise TypeError("Scaling must be either a number (factor) or a numpy array (matrix).")
+    reference_points = generate_reference_points(molecule_data.shape[1], scaling)
         
     distances = np.empty((molecule_data.shape[0], len(reference_points)))
     for i, point in enumerate(molecule_data):
