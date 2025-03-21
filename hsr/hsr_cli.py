@@ -20,19 +20,19 @@ def main():
             print(f"Warning: Unrecognized feature set '{argument}'. Using DEFAULT_FEATURES.")
             return DEFAULT_FEATURES
     
-    parser = argparse.ArgumentParser(description="HSR (Hyper Shape Recognition) CLI for molecule comparison.",
+    parser = argparse.ArgumentParser(description="HSR (Hyper Shape Recognition) CLI for comparison of 3D structures.",
                                      formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('-s', '--similarity', nargs=2, metavar=('mol1', 'mol2'), 
-                        help='Calculate similarity between two molecule files. Requires exactly two molecule files.')
+                        help='Calculate the similarity score between two 3D structures represented by default HSR fingerprints. Requires exactly two 3D structure files with exactly one structure each.')
     parser.add_argument('-d', '--distance', nargs=2, metavar=('mol1', 'mol2'), 
-                        help='Calculate distance between two molecule files. Requires exactly two molecule files.')
+                        help='Calculate the Manhattan distance between two 3D structures represented by default HSR fingerprints. Requires exactly two 3D structure files with exactly one structure each.')
     parser.add_argument('-f', '--fingerprint', nargs='+', metavar='molecule', 
-                        help='Generate fingerprint for one or more molecule files.')
+                        help='Generates fingerprint for molecules contained in one or more 3D structure files with exactly one structure each.')
     
     parser.add_argument('-removeH', action='store_true', help='Remove hydrogen atoms')
     parser.add_argument('-chirality', action='store_true', help='Consider chirality')
     parser.add_argument('-features', default='DEFAULT_FEATURES', type=parse_dict_or_none,
-                        help="Defines the use of additional features for the comparison. "
+                        help="Define the use of additional features for the comparison. "
                              "Available options: DEFAULT_FEATURES for 6D representation (default), 'None' for only spatial coordinates, and"
                              "PROTON_FEATURES for 4D representation including proton feature besides spatial coordinates. "
                              "For different features, it is necessary to define new ones in the package (see documentation).")
