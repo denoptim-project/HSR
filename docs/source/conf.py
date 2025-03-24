@@ -33,4 +33,4 @@ html_theme = 'sphinx_rtd_theme'
 
 # -- Options for GitHub links -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-github-links
-html_baseurl = 'https://github.com/marcellocostamagna/HSR'
+html_baseurl = 'https://github.com/denoptim-project/HSR'

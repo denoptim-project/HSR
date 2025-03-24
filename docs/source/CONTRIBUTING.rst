@@ -10,7 +10,7 @@ Reporting Issues and Suggesting Improvements
 --------------------------------------------
 
 If you encounter bugs, errors, or areas of improvement in HSR, we
-encourage you to open an issue in our `repository <https://github.com/marcellocostamagna/HSR>`_. When creating an
+encourage you to open an issue in our `repository <https://github.com/denoptim-project/HSR>`_. When creating an
 issue, please provide:
 
 -  A clear and descriptive title.

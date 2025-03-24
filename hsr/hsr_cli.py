@@ -4,7 +4,12 @@ from .fingerprint import *
 from .pca_transform import *
 from .utils import *
 from .similarity import *
-from .version import __version__
+from importlib.metadata import version, PackageNotFoundError
+
+try:
+    __version__ = version("hsr")
+except PackageNotFoundError:
+    __version__ = "unknown"
 
 def main():
     

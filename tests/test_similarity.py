@@ -11,14 +11,13 @@ def generate_3d_coords(mol):
 
 # Fixtures for RDKit Mol objects
 @pytest.fixture
-def ethanol_3d():
-    mol = Chem.MolFromSmiles('CCO')
+def methylamine_3d():
+    mol = Chem.MolFromSmiles('CN')  
     return generate_3d_coords(mol)
 
 @pytest.fixture
-def charged_ethanol_3d():
-    mol = Chem.MolFromSmiles('CCO')
-    mol.GetAtomWithIdx(0).SetFormalCharge(1)
+def charged_methylamine_3d():
+    mol = Chem.MolFromSmiles('C[N+]')  
     return generate_3d_coords(mol)
 
 @pytest.fixture
@@ -47,23 +46,22 @@ def test_calculate_mean_absolute_difference_different_lengths():
     with pytest.raises(IndexError):
         similarity.calculate_manhattan_distance(moments1, moments2)
 
-def test_compute_similarity_3d_mols(ethanol_3d, ethane_3d):
+def test_compute_similarity_3d_mols(methylamine_3d, ethane_3d):
     # Similarity between identical molecules
-    similarity_same = similarity.compute_similarity(ethanol_3d, ethanol_3d)
+    similarity_same = similarity.compute_similarity(methylamine_3d, methylamine_3d)
     assert similarity_same == 1 
 
     # Similarity between different molecules
-    similarity_diff_1 = similarity.compute_similarity(ethanol_3d, ethane_3d)
+    similarity_diff_1 = similarity.compute_similarity(methylamine_3d, ethane_3d)
 
     assert similarity_diff_1 < 1
 
-def test_compute_similarity_charged_vs_neutral(ethanol_3d, charged_ethanol_3d, capsys):
-    similarity_score = similarity.compute_similarity(ethanol_3d, charged_ethanol_3d, chirality=True)
+def test_compute_similarity_charged_vs_neutral(methylamine_3d, charged_methylamine_3d, capsys):
+    similarity_score = similarity.compute_similarity(methylamine_3d, charged_methylamine_3d, chirality=True)
     assert similarity_score < 1
 
     captured = capsys.readouterr()
-    expected_warning = ("WARNING: Comparison between molecules of different dimensionality: "
-                        "4 and 5.\n"
-                        "The similarity score may not be accurate!")
+ 
+    expected_warning = ("WARNING: Chirality may not be consistent. 2 vectors have arbitrary signs.")
     
     assert expected_warning in captured.out    
