@@ -34,7 +34,7 @@ or
 Build from source
 --------------------
 
-Clone the `HSR repository <https://github.com/marcellocostamagna/HSR>`_ on your machine. Move inside it and create the conda environment:
+Clone the `HSR repository <https://github.com/denoptim-project/HSR>`_ on your machine. Move inside it and create the conda environment:
 
 
 .. code-block:: bash
@@ -71,7 +71,7 @@ Licensing
 ---------
 
 HSR is licensed under the GNU Affero General Public License Version 3, 19 November 2007. For more details, 
-see the LICENSE file in the `source code repository <https://github.com/marcellocostamagna/HSR>`_ or visit `GNU AGPL v3 License <https://www.gnu.org/licenses/agpl-3.0.html>`_.
+see the LICENSE file in the `source code repository <https://github.com/denoptim-project/HSR>`_ or visit `GNU AGPL v3 License <https://www.gnu.org/licenses/agpl-3.0.html>`_.
 
 Citing HSR
 ----------
