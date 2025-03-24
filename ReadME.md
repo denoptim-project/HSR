@@ -46,7 +46,7 @@ Run the folowing command to get help in using HSR from CLI:
 hsr -h
 ```
 
-For a detailed overview of HSR's methodology check our [documentation](https://marcellocostamagna.github.io/HSR/).
+For a detailed overview of HSR's methodology check our [documentation](https://denoptim-project.github.io/HSR/).
 
 
 ### Licensing
@@ -61,5 +61,5 @@ If you use HSR in your research, please cite it as follows:
 
 ### Contributing
 
-Contributions to HSR are welcome! Please read our [Contributing Guidelines](https://marcellocostamagna.github.io/HSR/CONTRIBUTING.html) for information on how to get started.
+Contributions to HSR are welcome! Please read our [Contributing Guidelines](https://denoptim-project.github.io/HSR/CONTRIBUTING.html) for information on how to get started.
 
