@@ -42,7 +42,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           pip uninstall -y hsr
-          pip install dist/*.whl
+          pip install $(ls -t dist/*.whl | head -n 1) 
           hsr --version
 
       - name: Publish to PyPI (Linux only)
