@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 
+
 setup(
     name="hsr",
     use_scm_version=True,
