@@ -1,2 +1,0 @@
-[console_scripts]
-hsr = hsr.hsr_cli:main

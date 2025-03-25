@@ -44,6 +44,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           python -m pip install build setuptools setuptools-scm wheel
+          rm -rf dist/*
           python -m build
 
       - name: Smoke test CLI from built package (Linux only)
